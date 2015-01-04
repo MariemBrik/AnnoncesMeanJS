@@ -1,0 +1,21 @@
+<section data-ng-controller="AnnoncesController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="annonce.name"></h1>
+	</div>
+	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == annonce.user._id))">
+		<a class="btn btn-primary" href="/#!/annonces/{{annonce._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	<small>
+		<em class="text-muted">
+			Postée le
+			<span data-ng-bind="annonce.created | date:'mediumDate'"></span>
+			par
+			<span data-ng-bind="annonce.user.displayName"></span>
+		</em>
+	</small>
+</section>

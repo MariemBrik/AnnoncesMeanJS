@@ -1,0 +1,19 @@
+.buildings {
+    stroke: #29B7D0;
+    fill: #F7F5F5;
+}
+
+.roads {
+    stroke: #aaa;
+    fill: #FFFFFF;
+}
+
+.amenities{
+    stroke: #FFFFFF;
+    fill: #C5BEBE;
+}
+
+.naturals {
+    stroke: #C5BDBD;
+    fill: #8CEC91;
+}

@@ -1,0 +1,67 @@
+.content {
+	margin-top: 50px;
+}
+.undecorated-link:hover {
+	text-decoration: none;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+	display: none !important;
+}
+.ng-invalid.ng-dirty {
+	border-color: #FA787E;
+    /**/
+}
+.ng-valid.ng-dirty {
+	border-color: #78FA89;
+    /**/
+}
+
+.buildings {
+    stroke: #0B3CEF;
+    fill: #29B7D0;
+}
+
+.buildings:hover {
+    stroke: #0B3CEF;
+    fill: #0B3CEF;
+}
+
+.roads {
+    stroke: #E6D9DE;
+    fill: #E6D9DE;
+}
+
+.amenities{
+    stroke: #700830;
+    fill: #A40F48;
+}
+
+.naturals {
+    stroke: #088A08;
+    fill: #088A08;
+}
+
+body{
+    background-color: #D8D8D8;
+}
+
+.span {
+    font-size: normal;
+    font-weight: bold;
+    color: grey;
+    text-decoration: blink;
+    text-indent: 10 px;
+}
+.listeAccueil {
+    font-size: normal;
+    font-weight: bold;
+    color: green ;
+    text-indent: 10 px;
+}
+
+.AccueilLeft {
+  margin-left: auto;
+  margin-top: auto;
+  width: 100 px;
+  padding: 30 px; /* largeur obligatoire pour être centré */
+}

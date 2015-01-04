@@ -1,0 +1,19 @@
+<section data-ng-controller="AnnoncesController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Liste des Annonces</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="annonce in annonces" data-ng-href="#!/annonces/{{annonce._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Postée le
+				<span data-ng-bind="annonce.created | date:'medium'"></span>
+				par
+				<span data-ng-bind="annonce.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="annonce.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!annonces.$resolved || annonces.length">
+    	Pas d'annonces pour l'instant, voulez-vous <a href="/#!/annonces/create">créer</a> une ?
+    </div>
+</section>

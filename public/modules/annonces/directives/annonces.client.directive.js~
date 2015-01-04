@@ -1,0 +1,79 @@
+'use strict';
+
+angular.module('annonces').directive('map', ['$http','shapes','d3', function ($http,shapes,d3){
+	
+
+	function drawShapes(scope,element) 
+	{
+		var response = $http.get('/modules/core/directives/data/data.json');
+		response.success(function(data) 
+		{
+			var buildings = [], roads = [], amenities = [], naturals = [];
+				for(var i = data.length - 1; i > 0; i-- )
+				{
+					if(typeof data[i].building !== 'undefined' && data[i].building === true){
+						buildings.push(shapes.createBuilding(data[i]));
+					}
+					if(typeof data[i].highway !== 'undefined'){
+						roads.push(shapes.createRoad(data[i]) );
+					}
+					if(typeof data[i].natural !== 'undefined'){
+						naturals.push(shapes.createNatural(data[i]) );
+					}
+					if(typeof data[i].amenity !== 'undefined'){
+						amenities.push(shapes.createAmenity(data[i]));
+					}
+				}
+
+				var svg = d3.select(element[0])
+   						 .append('svg')
+    					 .attr('width', 1000)
+     					 .attr('height', 600);
+
+     		         svg.selectAll('.buildings')
+    				.data(buildings)
+    				.enter()
+    				.append('path')
+     					.classed('buildings',1)
+    					.attr('d',function(d){
+    						return d.toSvgPath();}
+    			);
+
+
+			 svg.selectAll('.roads')
+    				.data(roads)
+    				.enter()
+    				.append('path')
+        				.classed('roads',1)
+        				.attr('d',function(d){
+    					return d.toSvgPath();}
+				);
+
+		        svg.selectAll('.amenities')
+    				.data(amenities)
+    				.enter()
+    				.append('path')
+        				.classed('amenities',1)
+        				.attr('d',function(d){
+    					return d.toSvgPath();}
+				);
+
+		       svg.selectAll('.naturals')
+    				.data(naturals)
+    				.enter()
+    				.append('path')
+    				    .classed('naturals',1)
+    				    .attr('d',function(d){
+    					return d.toSvgPath();}
+				);
+
+
+		});
+	}
+
+	return {
+		restrict : 'E',
+		link: drawShapes
+	};
+
+}]);
